@@ -56,7 +56,7 @@ public class VideoPlayerComponent implements LifecycleObserver, ExoPlayer.EventL
     private AdaptiveTrackSelection.Factory videoTrackSelectionFactory = new AdaptiveTrackSelection.Factory(bandwidthMeter);
     private DefaultTrackSelector trackSelector;
 
-    public VideoPlayerComponent(Context context, SimpleExoPlayerView simpleExoPlayerView, String videoUrl) {
+    VideoPlayerComponent(Context context, SimpleExoPlayerView simpleExoPlayerView, String videoUrl) {
         this.context = context;
         this.simpleExoPlayerView = simpleExoPlayerView;
         this.videoUrl = videoUrl;
@@ -152,10 +152,6 @@ public class VideoPlayerComponent implements LifecycleObserver, ExoPlayer.EventL
 
     }
 
-    private void updateButtonVisibilities() {
-
-    }
-
     @Override
     public void onLoadingChanged(boolean isLoading) {
     }
@@ -198,21 +194,8 @@ public class VideoPlayerComponent implements LifecycleObserver, ExoPlayer.EventL
             initializePlayer();
         } else {
             updateResumePosition();
-            updateButtonVisibilities();
-            showControls();
+
         }
-    }
-
-    private void showControls() {
-
-    }
-
-    private void showToast(int messageId) {
-        showToast(context.getString(messageId));
-    }
-
-    private void showToast(String message) {
-        Toast.makeText(context.getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -224,6 +207,11 @@ public class VideoPlayerComponent implements LifecycleObserver, ExoPlayer.EventL
     public void onPlaybackParametersChanged(PlaybackParameters playbackParameters) {
 
     }
+
+    private void showToast(String message) {
+        Toast.makeText(context.getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
+
 
     private static boolean isBehindLiveWindow(ExoPlaybackException e) {
         if (e.type != ExoPlaybackException.TYPE_SOURCE) {

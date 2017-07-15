@@ -18,7 +18,7 @@ public class VideoPlayerActivity extends LifecycleActivity {
         setContentView(R.layout.activity_main);
         SimpleExoPlayerView playerView = findViewById(R.id.simple_exoplayer_view);
 
-        String videoUrl = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4";
+        String videoUrl = "http://docs.evostream.com/sample_content/assets/bunny.mp4";
         getLifecycle().addObserver(new VideoPlayerComponent(getApplicationContext(), playerView, videoUrl));
 
     }
